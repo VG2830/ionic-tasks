@@ -1,23 +1,6 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-
-  </div>
-</ion-content> -->
-<app-formnavbar></app-formnavbar>
-<!-- <app-mainfirst> </app-mainfirst> -->
+<ion-content>
+<app-formnavbar *ngIf="step === 1" [formData]="formData" (next)="goToStep(2)"></app-formnavbar>
+<app-mainfirst *ngIf="step === 2" [formData]="formData" (prev)="goToStep(1)" (next)="goToStep(3)"> </app-mainfirst>
+<app-lastpage *ngIf="step === 3" [formData]="formData" (prev)="goToStep(2)" (submit)="submitForm()" ></app-lastpage>
+</ion-content>

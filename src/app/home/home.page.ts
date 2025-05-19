@@ -9,5 +9,19 @@ import { Component } from '@angular/core';
 export class HomePage {
 
   constructor() {}
+ step = 1;
+  formData = {
+    name: '',
+    email: '',
+    profession: '',
+  };
 
+  goToStep(num: number) {
+    this.step = num;
+  }
+
+  submitForm() {
+    console.log('Submitted data:', this.formData);
+    // Call API or save to DB here
+  }
 }
