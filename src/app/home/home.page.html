@@ -1,6 +1,6 @@
 
 <ion-content>
-<app-formnavbar *ngIf="step === 1" [formData]="formData" (next)="goToStep(2)"></app-formnavbar>
-<app-mainfirst *ngIf="step === 2" [formData]="formData" (prev)="goToStep(1)" (next)="goToStep(3)"> </app-mainfirst>
+<app-formnavbar *ngIf="step === 1" [formData]="formData" (submit)="goToStep(2)"></app-formnavbar>
+<app-mainfirst *ngIf="step === 2" [formData]="formData" (prev)="goToStep(1)" (submit)="goToStep(3)"> </app-mainfirst>
 <app-lastpage *ngIf="step === 3" [formData]="formData" (prev)="goToStep(2)" (submit)="submitForm()" ></app-lastpage>
 </ion-content>
