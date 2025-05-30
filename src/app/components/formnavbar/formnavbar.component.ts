@@ -28,6 +28,7 @@ export class FormnavbarComponent  implements OnInit {
 languageOptions:any[]=[];
 selectedLanguage:string="";
 
+selectedSkills:any[]=[];
 
 
   //try 
@@ -42,7 +43,7 @@ selectedLanguage:string="";
   jobDescription: ['', Validators.required],
   candidatetype: ['', Validators.required],
    minexp: [''],
-    maxexp: [''],
+  maxexp: [''],
   isgender: ['', Validators.required],
   locations: ['', Validators.required],
   WorkFromHome: ['', Validators.required],
@@ -66,6 +67,10 @@ selectedLanguage:string="";
       this.apiService.getLanguages().subscribe((res: any) => {
       if (res.status === 'success') {
         this.languageOptions = res.data;}
+      });
+      this.apiService.getSkills().subscribe((res: any) => {
+      if (res.status === 'success') {
+        this.selectedSkills = res.data;}
       });
 
   }
@@ -100,12 +105,17 @@ submitForm() {
     this.jobForm.markAllAsTouched(); // Show validation errors
     return;
   }
-
+// const userId = LocalStorageUtil.getItem('user_id');
+// if (!userId) {
+//   console.error('User ID missing. Cannot submit form.');
+//   return;
+// }
   // const formData = this.jobForm.value;
 const formData = {
   ...this.jobForm.value,
   step_one_data: "step one", // replace with actual step one form/control or object
   user_id: LocalStorageUtil.getItem('user_id')
+  // user_id:userId
 };
 
   console.log('Submitting form:', formData);
